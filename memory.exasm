@@ -1,0 +1,45 @@
+; use this script to store data form 200~1
+
+; mem-addr: 001   002  003  ...    n    ...  200
+; data:     200   199  198  ...  201-n  ...  001
+
+; delay setup: simulation fps: 30, time per frame: 50us
+; system clock: 500k commands/sec
+; delay 1s = 30*50us = 1500us = 1.5ms = 750 commands
+
+imme 60
+mov t0 s0
+
+label loop
+mov s0 t3
+push
+imme 1
+mov t0 t2
+mov s0 t1
+sub
+mov t3 s0
+loop
+mov s0 t3
+neq0
+
+; check any data from ram
+imme 194
+; 201 - 194 = 7
+lw
+mov t3 io
+
+; check pop
+; 1
+pop
+; 2
+pop
+; 3
+pop
+; 4
+pop
+; 5
+pop
+
+mov t3 io
+
+

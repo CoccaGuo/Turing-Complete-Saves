@@ -1,0 +1,26 @@
+imme 0b1111_1111
+mov t0 s0
+
+label loop
+mov s0 t1
+sll
+; store sll result in s0
+mov t3 s0
+push
+loop
+mov s0 t3
+neq0
+
+; pop 0x00
+pop
+; pop 0x80
+pop
+; pop 0xc0
+pop
+; pop 0xe0
+pop
+; pop 0xf0
+pop
+
+
+mov t3 io
